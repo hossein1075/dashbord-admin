@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+/* font noto */
+
+@font-face {
+    font-family: 'Noto Regular';
+    src: url('../public/fonts/NotoSans-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Bold';
+    src: url('../public/fonts/NotoSans-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto light';
+    src: url('../public/fonts/NotoSans-Light.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto Medium';
+    src: url('../public/fonts/NotoSans-Medium.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Noto SemiBold';
+    src: url('../public/fonts/NotoSans-SemiBold.ttf') format('truetype');
+    font-display: swap;
+}
+
+@theme {
+    --font-Noto-Regular: 'Noto Regular';
+    --font-Noto-Bold: 'Noto Bold';
+    --font-Noto-light: 'Noto light';
+    --font-Noto-Medium: 'Noto Medium';
+    --font-Noto-SemiBold: 'Noto SemiBold';
+}
+
+@layer components {
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+@layer base {
+
+    body {
+        font-family: var(--font-Noto-Regular), sans-serif;
+        font-weight: 400;
+    }
+}
+
+@layer container {
+@apply mx-auto px-3.75
+}
