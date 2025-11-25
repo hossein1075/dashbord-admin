@@ -7,7 +7,7 @@ import { BiCommentDetail } from "react-icons/bi";
 function NavDesktop() {
     return (
         <>
-            <nav className='flex items-center justify-between py-2 px-10 bg-white'>
+            <nav className='hidden lg:flex items-center justify-between py-2 px-10 bg-white'>
                 <div className='flex gap-4'>
                     <button className='text-white bg-emerald-500 w-10 h-9 flexCenter rounded-md cursor-pointer'>
                         <FaBars />
