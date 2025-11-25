@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+
+/* dark & light mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
 /* font noto */
 
 @font-face {
