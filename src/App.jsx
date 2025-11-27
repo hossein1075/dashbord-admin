@@ -4,21 +4,25 @@ import Header from './Components/Header/Header'
 import routes from './router'
 import { useRoutes } from 'react-router-dom'
 import SideBar from './Components/SideBar/SideBar'
+import { TemplateContextApi } from './ContextApi/CreateContext'
 
 function App() {
 let route = useRoutes(routes)
+const [open, setOpen] = useState(false)
 
   return (
     <>
+    <TemplateContextApi.Provider value={{open, setOpen}}>
     <div className='flex'>
     <SideBar/>
     <div className='flex-1 ml-50'>
     <Header/>
-    <div className='p-20'>
+    <div className='pt-20'>
       {route}
     </div>
     </div>
     </div>
+    </TemplateContextApi.Provider>
     </>
   )
 }

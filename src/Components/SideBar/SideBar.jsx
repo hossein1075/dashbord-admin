@@ -1,20 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiOutlineHome } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegComments } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineTaskAlt } from "react-icons/md";
+import { TemplateContextApi } from '../../ContextApi/CreateContext';
+
 function SideBar() {
+
+  const ContextData = useContext(TemplateContextApi)
 
   // <div class="transition-[left_0.3s_ease,width_0.3s_ease] ..."></div>
 
   return (
-    <nav className='w-62.5 h-screen fixed  bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700'>
+    <nav className={`w-62.5 h-screen fixed lg:left-0  bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700  transition-all duration-500 ease-in-out delay-150 ${ContextData.open ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-[-260px] opacity-0 scale-95'}`}>
       <div className='bg-emerald-500 p-2.5 mb-4 '>
         <img src="/images/sidebar/logo.svg" className='h-11' alt="logo" />
       </div>
       <ul>
+        <li className='mb-4'>
+          <button className={`flex items-center gap-2.5 py-1.75 px-3.75  text-sm`}>
+            <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  `}>
+            
+            </span>
+            home
+          </button>
+        </li>
         <li className='mb-4'>
           <NavLink to='/home' className={({isActive}) => `flex items-center gap-2.5 py-1.75 px-3.75  text-sm  ${isActive ? 'bg-gray-100 text-zinc-800' : 'text-zinc-800 dark:text-zinc-100'}`}>
             <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  ${window.location.pathname === '/home' ? 'bg-emerald-500 text-zinc-100' : 'bg-zinc-100'}`}>
