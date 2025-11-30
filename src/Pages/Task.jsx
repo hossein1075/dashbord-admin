@@ -1,8 +1,11 @@
 import React from 'react'
+import TitlePage from '../Components/TitlePage/TitlePage'
 
 function Task() {
   return (
-    <div>Task</div>
+    <section>
+      <TitlePage title='task' text='A collection of Task for doing by people.'/>
+    </section>
   )
 }
 

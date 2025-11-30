@@ -43,6 +43,7 @@
     --font-Noto-light: 'Noto light';
     --font-Noto-Medium: 'Noto Medium';
     --font-Noto-SemiBold: 'Noto SemiBold';
+    --text-27: 1.6875rem;
 }
 
 @layer components {

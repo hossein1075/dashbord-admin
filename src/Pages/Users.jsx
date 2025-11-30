@@ -1,8 +1,11 @@
 import React from 'react'
+import TitlePage from '../Components/TitlePage/TitlePage'
 
 function Users() {
   return (
-    <div>Users</div>
+     <section>
+      <TitlePage title='Users' text='A collection of Users in web seite.'/>
+    </section>
   )
 }
 
