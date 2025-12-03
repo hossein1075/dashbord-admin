@@ -13,11 +13,11 @@ const [open, setOpen] = useState(false)
   return (
     <>
     <TemplateContextApi.Provider value={{open, setOpen}}>
-    <div className='flex '>
+    <div className='flex min-w-screen'>
     <SideBar/>
     <div className='flex-1 lg:ml-50'>
     <Header/>
-    <div className='lg:p-20 pt-20 bg-gray-100 dark:bg-zinc-700 flex-1 '>
+    <div className='lg:p-20 pt-20 bg-gray-100 dark:bg-zinc-700'>
       {route}
     </div>
     </div>
