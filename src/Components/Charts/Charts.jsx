@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, PieChart, Pie } from 'recharts';
+import { ResponsiveContainer, Legend, Line, LineChart, Tooltip, XAxis, YAxis, PieChart, Pie } from 'recharts';
 
 const data = [
     {
@@ -80,55 +80,52 @@ const data02 = [
 ];
 function Charts() {
     return (
-        <div className='border-t-4 border-solid border-emerald-500 flex justify-between mt-10 rounded-t-md'>
-            <LineChart
-                style={{ width: '100%', aspectRatio: 1.618, maxWidth: 700, padding: '16px', background: '#FAFAFA' }}
-                responsive
-                data={data}
-                margin={{
-                    top: 20,
-                    right: 20,
-                    bottom: 5,
-                    left: 0,
-                }}
-            >
-                {/* <CartesianGrid stroke="#aaa" strokeDasharray="5 5" /> */}
-                <Line type="monotone" dataKey="Visitors" stroke="#7f3dff" strokeWidth={2} name="Visitors" />
-                <Line type="monotone" dataKey="Orders" stroke="#ff3d3d" strokeWidth={2} name="Orders" />
-                <XAxis dataKey="name" />
-                <YAxis width="auto" label={{ value: '', position: 'insideCenter', angle: -90 }} />
-                <Legend align="right" />
-                <Tooltip />
-            </LineChart>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 overflow-x-hidden'>
+            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md'>
+                <div className="chart-box">
+                    <ResponsiveContainer width="100%" height={350}>
+                        <LineChart data={data} margin={{ top: 20, right: 20, bottom: 5, left: 0 }}>
+                            <Line type="monotone" dataKey="Visitors" stroke="#7f3dff" strokeWidth={2} />
+                            <Line type="monotone" dataKey="Orders" stroke="#ff3d3d" strokeWidth={2} />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
+            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md'>
+                <div className="chart-box">
+                    <ResponsiveContainer width="100%" height={350}>
+                        <PieChart>
+                            <Pie
+                                data={data01}
+                                dataKey="value"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius="55%"
+                                fill="#8884d8"
+                            />
 
-            <PieChart
-                style={{ width: '100%', maxWidth: '400px', maxHeight: '80vh', aspectRatio: 1, padding: '16px', background: '#FAFAFA' }}
-                responsive
-                margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
-            >
-                <Pie
-                    data={data01}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius="50%"
-                    fill="#8884d8"
-                // isAnimationActive={isAnimationActive}
-                />
-                <Pie
-                    data={data02}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius="60%"
-                    outerRadius="80%"
-                    fill="#82ca9d"
-                    label
-                // isAnimationActive={isAnimationActive}
-                />
-            </PieChart>
+                            <Pie
+                                data={data02}
+                                dataKey="value"
+                                cx="50%"
+                                cy="50%"
+                                innerRadius="60%"
+                                outerRadius="80%"
+                                fill="#82ca9d"
+                                label
+                            />
+
+                            <Tooltip />
+                        </PieChart>
+                    </ResponsiveContainer>
+
+                </div>
+
+            </div>
         </div>
     )
 }
