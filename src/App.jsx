@@ -11,19 +11,15 @@ let route = useRoutes(routes)
 const [open, setOpen] = useState(false)
 
   return (
-    <>
-    <TemplateContextApi.Provider value={{open, setOpen}}>
-    <div className='flex'>
-    <SideBar/>
-    <div className='flex-1 lg:ml-50'>
-    <Header/>
-    <div className='lg:p-20 p-5 pt-20 dark:bg-zinc-700'>
-      {route}
-    </div>
-    </div>
-    </div>
+    <TemplateContextApi.Provider value={{ open, setOpen }}>
+      <div className='flex min-h-screen bg-gray-100 dark:bg-zinc-700'>
+        <SideBar />
+        <div className='flex-1 flex flex-col min-h-screen'>
+          <Header />
+          <main className='flex-1 w-full p-5 lg:p-20 pt-20'>{route}</main>
+        </div>
+      </div>
     </TemplateContextApi.Provider>
-    </>
   )
 }
 

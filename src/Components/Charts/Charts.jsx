@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResponsiveContainer, Legend, Line, LineChart, Tooltip, XAxis, YAxis, PieChart, Pie } from 'recharts';
+import { ResponsiveContainer, Legend, Line, LineChart, Tooltip, XAxis, YAxis,} from 'recharts';
 
 const data = [
     {
@@ -63,25 +63,11 @@ const data = [
         Orders: 50
     },
 ];
-const data01 = [
-    { name: 'Buy - Mobile', value: 120 },
-    { name: 'Buy - Laptop', value: 80 },
-    { name: 'Buy - Headphones', value: 45 },
-    { name: 'Buy - Monitor', value: 60 },
-    { name: 'Buy - Keyboard', value: 30 },
-];
 
-const data02 = [
-    { name: 'Sell - Mobile', value: 200 },
-    { name: 'Sell - Laptop', value: 150 },
-    { name: 'Sell - Headphones', value: 90 },
-    { name: 'Sell - Monitor', value: 110 },
-    { name: 'Sell - Keyboard', value: 70 },
-];
 function Charts() {
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 overflow-x-hidden'>
-            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md'>
+       
+            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50'>
                 <div className="chart-box">
                     <ResponsiveContainer width="100%" height={350}>
                         <LineChart data={data} margin={{ top: 20, right: 20, bottom: 5, left: 0 }}>
@@ -95,38 +81,7 @@ function Charts() {
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md'>
-                <div className="chart-box">
-                    <ResponsiveContainer width="100%" height={350}>
-                        <PieChart>
-                            <Pie
-                                data={data01}
-                                dataKey="value"
-                                cx="50%"
-                                cy="50%"
-                                outerRadius="55%"
-                                fill="#8884d8"
-                            />
-
-                            <Pie
-                                data={data02}
-                                dataKey="value"
-                                cx="50%"
-                                cy="50%"
-                                innerRadius="60%"
-                                outerRadius="80%"
-                                fill="#82ca9d"
-                                label
-                            />
-
-                            <Tooltip />
-                        </PieChart>
-                    </ResponsiveContainer>
-
-                </div>
-
-            </div>
-        </div>
+       
     )
 }
 

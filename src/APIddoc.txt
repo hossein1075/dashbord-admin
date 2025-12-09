@@ -1,0 +1,47 @@
+API Products
+https://information-products-a101d-default-rtdb.firebaseio.com/products.json
+
+fetch ==> 
+// get
+// delete 
+// post {
+      id: infoproducts.length + 1,
+      product
+      price
+      number
+}
+API Comments
+https://information-products-a101d-default-rtdb.firebaseio.com/comments.json
+
+fetch ==> 
+// get {
+      id: infoproducts.length + 1,
+      name
+      email
+      comment
+}
+// delete 
+API users
+https://information-products-a101d-default-rtdb.firebaseio.com/users.json
+
+fetch ==> 
+// get
+// delete 
+// post | put {
+      id: infoproducts.length + 1,
+      name
+      email
+      phone
+}
+API tasks
+https://information-products-a101d-default-rtdb.firebaseio.com/tasks.json
+
+fetch ==> 
+// get {
+      id: infoproducts.length + 1,
+      name
+      email
+      task
+}
+// delete 
+

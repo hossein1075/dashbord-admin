@@ -28,12 +28,16 @@ function SideBar() {
   // <div class="transition-[left_0.3s_ease,width_0.3s_ease] ..."></div>
 
   return (
-        <nav className={`w-62.5 h-screen fixed lg:left-0  bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700 `} style={{ transform: isDesktop ? 'translateX(0) scale(1)' : ContextData.open ? 'translateX(0) scale(1)' : 'translateX(-260px) scale(0.95)' ,  opacity:
-      isDesktop
-        ? 1
-        : ContextData.open
-        ? 1
-        : 0,  transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease-in-out',}}>
+        <nav className={`w-62.5 h-screen  bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700 ${isDesktop ? 'w-[250px] h-screen flex-shrink-0' : 'w-[250px] h-screen absolute z-50'}`} 
+        style={{
+    transform: isDesktop
+      ? 'translateX(0) scale(1)'
+      : ContextData.open
+      ? 'translateX(0) scale(1)'
+      : 'translateX(-260px) scale(0.95)',
+    opacity: isDesktop ? 1 : ContextData.open ? 1 : 0,
+    transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease-in-out',
+  }}>
     <div className='bg-emerald-500 p-2.5 mb-4 transition-all duration-500 ease-in-out'>
         <img src="/images/sidebar/logo.svg" className='h-11' alt="logo" />
       </div>
