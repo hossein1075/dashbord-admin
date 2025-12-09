@@ -1,17 +1,16 @@
 import React from 'react'
-import { FiPieChart } from "react-icons/fi";
-import { IoIosTrendingUp } from "react-icons/io";
-function HomeBoxs() {
+
+function HomeBoxs({title, icon, upDown, amount, colorText, borderColors, colorBg}) {
   return (
-    <div className='flexCenter relative max-w-[274px] max-h-[140px] py-6 px-4 gap-3 border-2 rounded-md border-solid border-emerald-500 bg-emerald-100 text-emerald-500'>
+    <div className={`flexCenter relative max-w-[274px] max-h-[140px] py-6 px-4 gap-3 border-2 rounded-md border-solid ${borderColors} ${colorBg} ${colorText}`}>
         <div>
-          <FiPieChart size={33}/>
+         {icon}
         </div>
         <div className='flexCenter flex-col'>
-          <h1 className='mb-2 text-4xl font-Noto-Medium font-medium '>3,020</h1>
-          <h6>Weekly new visitors</h6>
-          <div className='absolute top-1 right-1 border-2 rounded-lg py-1 px-1.75 border-solid border-emerald-500'>
-            <IoIosTrendingUp size={10}/>
+          <h1 className='mb-2 text-4xl font-Noto-Medium font-medium '>{amount}</h1>
+          <h6>Weekly new {title}</h6>
+          <div className={`absolute top-1 right-1 border-2 rounded-lg py-1 px-1.75 border-solid ${borderColors}`}>
+            {upDown}
           </div>
         </div>
 

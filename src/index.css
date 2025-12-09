@@ -1,12 +1,7 @@
 @import "tailwindcss";
+/* @plugin "daisyui"; */
 
 
-/* dark & light mode */
-@custom-variant dark (&:where(.dark, .dark *));
-
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
 
 
 /* font noto */
@@ -37,6 +32,8 @@
     font-display: swap;
 }
 
+
+
 @theme {
     --font-Noto-Regular: 'Noto Regular';
     --font-Noto-Bold: 'Noto Bold';
@@ -44,6 +41,13 @@
     --font-Noto-Medium: 'Noto Medium';
     --font-Noto-SemiBold: 'Noto SemiBold';
     --text-27: 1.6875rem;
+}
+
+/* dark & light mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer components {
