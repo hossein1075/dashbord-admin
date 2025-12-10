@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import TitlePage from '../Components/TitlePage/TitlePage'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTaskeFromServer } from '../Redux/Tasks/tasks'
+import { getProductsFromServer } from '../Redux/Products/product'
+
 
 function Products() {
     let products = useSelector(state => state.products)
   let dispatch = useDispatch()
 
   useEffect(()=> {
-    dispatch(getTaskeFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/products.json"))
+    dispatch(getProductsFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/products.json"))
   },[])
 
   let productsSite = products ? Object.values(products) : []
@@ -22,6 +23,6 @@ function Products() {
 
 export default Products
 
-//  {productsSite.map(products => (
+//  {productsSite.map(product => (
       
 //      ))}

@@ -7,7 +7,7 @@ export const store = configureStore({
     reducer: {
         users: userSlice,
         products: productSlice,
-        comment: commentSlice,
+        comments: commentSlice,
         tasks: taskSlice
     }
 })
