@@ -5,7 +5,7 @@ import commentSlice from './Comments/comment'
 import taskSlice from './Tasks/tasks'
 export const store = configureStore({
     reducer: {
-        user: userSlice,
+        users: userSlice,
         product: productSlice,
         comment: commentSlice,
         task: taskSlice
