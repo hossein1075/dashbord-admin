@@ -6,8 +6,8 @@ import taskSlice from './Tasks/tasks'
 export const store = configureStore({
     reducer: {
         users: userSlice,
-        product: productSlice,
+        products: productSlice,
         comment: commentSlice,
-        task: taskSlice
+        tasks: taskSlice
     }
 })
