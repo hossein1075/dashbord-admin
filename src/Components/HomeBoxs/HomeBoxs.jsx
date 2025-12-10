@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomeBoxs({title, icon, upDown, amount, colorText, borderColors, colorBg}) {
   return (
-    <div className={`flexCenter relative max-w-[274px] max-h-[140px] py-6 px-4 gap-3 border-2 rounded-md border-solid ${borderColors} ${colorBg} ${colorText}`}>
+    <div className={`flexCenter relative  py-6 px-4 gap-3 border-2 rounded-md border-solid ${borderColors} ${colorBg} ${colorText}`}>
         <div>
          {icon}
         </div>
