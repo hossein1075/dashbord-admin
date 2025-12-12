@@ -42,11 +42,11 @@ function Comments() {
       <TitlePage title='Commnets' text='A collection of commnets showing your website data.'/>
        <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
         
-                 <Table 
+             <div>
+                  <Table 
                  styles={{
            table: {
-            tableLayout: "fixed",  
-            width: "100%",  
+            overflow: 'auto'
           },
           th: {
             background: "#04AA6D",
@@ -72,6 +72,7 @@ function Comments() {
               {rows}
             </Table.Tbody>
           </Table>
+             </div>
       
             </div>
     </section>

@@ -12,7 +12,7 @@ const [open, setOpen] = useState(false)
 
   return (
     <TemplateContextApi.Provider value={{ open, setOpen }}>
-      <div className='flex min-h-screen bg-gray-100 dark:bg-zinc-700'>
+      <div className='flex min-h-screen bg-gray-100 dark:bg-zinc-700 overflow-auto'>
         <SideBar />
         <div className='flex-1 flex flex-col min-h-screen'>
           <Header />
