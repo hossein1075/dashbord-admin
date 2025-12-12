@@ -9,47 +9,50 @@ import { TemplateContextApi } from '../../ContextApi/CreateContext';
 import { useTheme } from '../UseTheme/UseTheme';
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
-import { IoMdCloseCircleOutline } from "react-icons/io";
+import { IoSearchOutline } from "react-icons/io5";
+
 function SideBar() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
 
-  
+
   const ContextData = useContext(TemplateContextApi)
   const { dark, darkHandler } = useTheme()
-  useEffect(()=> {
+  useEffect(() => {
 
     const resizeHandler = () => setIsDesktop(window.innerWidth >= 1024)
 
     window.addEventListener('resize', resizeHandler)
     return () => window.removeEventListener('resize', resizeHandler)
-  },[])
+  }, [])
 
 
   // <div class="transition-[left_0.3s_ease,width_0.3s_ease] ..."></div>
 
   return (
-        <nav className={`w-62.5 h-screen  bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700 ${isDesktop ? 'w-[250px] h-screen flex-shrink-0' : 'w-[250px] h-screen absolute z-50'}`} 
-        style={{
-    transform: isDesktop
-      ? 'translateX(0) scale(1)'
-      : ContextData.open
-      ? 'translateX(0) scale(1)'
-      : 'translateX(-260px) scale(0.95)',
-    opacity: isDesktop ? 1 : ContextData.open ? 1 : 0,
-    transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease-in-out',
-  }}>
-    <div className='bg-emerald-500 p-2.5 mb-4 transition-all duration-500 ease-in-out'>
+    <nav className={`w-62.5 fixed min-h-screen bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700 ${isDesktop ? 'w-[250px] h-screen flex-shrink-0' : 'w-[250px] h-screen absolute z-50'}`}
+      style={{
+        transform: isDesktop
+          ? 'translateX(0) scale(1)'
+          : ContextData.open
+            ? 'translateX(0) scale(1)'
+            : 'translateX(-260px) scale(0.95)',
+        opacity: isDesktop ? 1 : ContextData.open ? 1 : 0,
+        transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease-in-out',
+      }}>
+      <div className='bg-emerald-500 p-2.5 mb-4 transition-all duration-500 ease-in-out'>
         <img src="/images/sidebar/logo.svg" className='h-11' alt="logo" />
       </div>
+
+      <div className='p-1'>
+        <div className='relative mb-4 lg:hidden  bg-gray-100 h-9 flexCenter font-Noto-SemiBold font-semibold border-2 border-solid dark:border-violet-600 border-violet-200 rounded-md'>
+          <input type="text" className='w-full outline-none pl-7' placeholder='Search' />
+          <span className='absolute left-1'>
+            <IoSearchOutline size={20} />
+          </span>
+        </div>
+      </div>
+
       <ul>
-        <li className='mb-4 block lg:hidden'>
-          <button onClick={() => ContextData.setOpen(false)} className={`flex items-center gap-2.5  py-1.75 px-3.75  text-sm text-zinc-800 dark:text-zinc-100`}>
-            <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500 `}>
-              <IoMdCloseCircleOutline size={16} />
-            </span>
-            close
-          </button>
-        </li>
         <li className='mb-4 block lg:hidden'>
           <button onClick={darkHandler} className={`flex items-center gap-2.5 py-1.75 px-3.75  text-sm text-zinc-800 dark:text-zinc-100`}>
             <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  `}>
@@ -100,6 +103,13 @@ function SideBar() {
         </li>
       </ul>
 
+      <div className='absolute w-full bottom-0 lg:hidden'>
+        <button onClick={() => ContextData.setOpen(false)} className={`flex items-center w-full gap-2.5  py-1.75 px-3.75  text-sm text-zinc-800 dark:text-zinc-100`}>
+          <span className={`w-full rounded-lg flexCenter font-Noto-SemiBold font-semibold border-2 border-solid border-zinc-200 bg-zinc-100 dark:bg-emerald-500 py-1 px-1.5`}>
+            close SideBar
+          </span>
+        </button>
+      </div>
 
     </nav>
   )
