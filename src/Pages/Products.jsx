@@ -6,13 +6,6 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
-const elements = [
-  { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-  { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-  { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-  { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-];
 
 function Products() {
     let products = useSelector(state => state.products)
@@ -24,12 +17,12 @@ function Products() {
 
   let productsSite = products ? Object.values(products) : []
   console.log(productsSite);
-  const rows = elements.map((element, index) => (
-      <Table.Tr key={element.name} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>
-        <Table.Td>{element.position}</Table.Td>
-        <Table.Td>{element.name}</Table.Td>
-        <Table.Td>{element.symbol}</Table.Td>
-        <Table.Td>{element.mass}</Table.Td>
+  const rows = productsSite.map((element, index) => (
+    <Table.Tr key={element.id} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>
+        <Table.Td>{element.id}</Table.Td>
+        <Table.Td>{element.product}</Table.Td>
+        <Table.Td>{element.price}$</Table.Td>
+        <Table.Td>{element.number}</Table.Td>
         <Table.Td>
           <Button variant="filled" color="#04AA6D" size="xs" radius="md" className='text-zinc-50 mr-1'><GiConfirmed size={16}/></Button>
           <Button variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={16}/></Button>
@@ -54,15 +47,16 @@ function Products() {
         
       },
       td: {
-        paddingLeft: 10
+        paddingLeft: 10,
+        fontFamily: 'Noto Medium'
       }
     }}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Element position</Table.Th>
-            <Table.Th>Element name</Table.Th>
-            <Table.Th>Symbol</Table.Th>
-            <Table.Th>Atomic mass</Table.Th>
+            <Table.Th>Rows</Table.Th>
+            <Table.Th>Product</Table.Th>
+            <Table.Th>Price</Table.Th>
+            <Table.Th>Number</Table.Th>
             <Table.Th>Actions</Table.Th>
           </Table.Tr>
         </Table.Thead>
