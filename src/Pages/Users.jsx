@@ -7,13 +7,7 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
-const elements = [
-  { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-  { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-  { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-  { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-  { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-];
+
 function Users() {
   let users = useSelector(state => state.users)
   let dispatch = useDispatch()
@@ -25,7 +19,7 @@ function Users() {
   let usersSite = users ? Object.values(users) : []
   console.log(users);
   const rows = usersSite.map((element, index) => (
-    <Table.Tr key={element.name} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
+    <Table.Tr key={element.id} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
       <Table.Td>{element.id}</Table.Td>
       <Table.Td>{element.name}</Table.Td>
       <Table.Td>{element.phone}</Table.Td>
@@ -58,7 +52,7 @@ function Users() {
               },
               td: {
                 paddingLeft: 10,
-                fontFamily: 'Noto SemiBold'
+                fontFamily: 'Noto Medium'
               }
             }}>
             <Table.Thead>
