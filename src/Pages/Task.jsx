@@ -22,7 +22,7 @@ function Task() {
   console.log(tasksSite);
   const rows = tasksSite.map((element, index) => (
     <Table.Tr key={element.id} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>
-      <Table.Td>{element.id}</Table.Td>
+       <Table.Td>{index + 1}</Table.Td>
       <Table.Td>{element.name}</Table.Td>
       <Table.Td>{element.email}</Table.Td>
       <Table.Td>{element.task}</Table.Td>
@@ -36,13 +36,9 @@ function Task() {
     <section>
       <TitlePage title='task' text='A collection of Task for doing by people.'/>
        <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
-  
+   <Table.ScrollContainer minWidth={900}>
            <Table 
            styles={{
-     table: {
-      tableLayout: "fixed",  
-      width: "100%",  
-    },
     th: {
       background: "#04AA6D",
       color: "#FAFAFA",
@@ -53,10 +49,11 @@ function Task() {
       paddingLeft: 10,
       fontFamily: 'Noto Medium'
     }
+    
   }}>
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Rows</Table.Th>
+           <Table.Th className='w-15'>#</Table.Th>
           <Table.Th>Name</Table.Th>
           <Table.Th>Email</Table.Th>
           <Table.Th>Task</Table.Th>
@@ -68,7 +65,7 @@ function Task() {
         {rows}
       </Table.Tbody>
     </Table>
-
+</Table.ScrollContainer>
       </div>
     </section>
   )

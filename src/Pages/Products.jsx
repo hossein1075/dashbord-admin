@@ -19,7 +19,7 @@ function Products() {
   console.log(productsSite);
   const rows = productsSite.map((element, index) => (
     <Table.Tr key={element.id} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>
-        <Table.Td>{element.id}</Table.Td>
+         <Table.Td>{index + 1}</Table.Td>
         <Table.Td>{element.product}</Table.Td>
         <Table.Td>{element.price}$</Table.Td>
         <Table.Td>{element.number}</Table.Td>
@@ -33,13 +33,9 @@ function Products() {
  <section>
   <TitlePage title='Products' text='A collection of products showing your produce.'/>
    <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
-    
+     <Table.ScrollContainer minWidth={900}>
              <Table 
              styles={{
-       table: {
-        tableLayout: "fixed",  
-        width: "100%",  
-      },
       th: {
         background: "#04AA6D",
         color: "#FAFAFA",
@@ -53,7 +49,7 @@ function Products() {
     }}>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Rows</Table.Th>
+           <Table.Th className='w-15'>#</Table.Th>
             <Table.Th>Product</Table.Th>
             <Table.Th>Price</Table.Th>
             <Table.Th>Number</Table.Th>
@@ -65,7 +61,7 @@ function Products() {
           {rows}
         </Table.Tbody>
       </Table>
-  
+  </Table.ScrollContainer>
         </div>
  </section>
   )

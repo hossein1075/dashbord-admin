@@ -34,16 +34,10 @@ function Users() {
     <section>
       <TitlePage title='Users' text='A collection of Users in web seite.' />
 
-     
-
         <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
-
-          <Table
+         <Table.ScrollContainer minWidth={850}>
+           <Table
             styles={{
-              table: {
-                tableLayout: "fixed",
-                width: "100%",
-              },
               th: {
                 background: "#04AA6D",
                 color: "#FAFAFA",
@@ -57,7 +51,7 @@ function Users() {
             }}>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Rows</Table.Th>
+                <Table.Th className='w-15'>#</Table.Th>
                 <Table.Th>name</Table.Th>
                 <Table.Th>Phone Number</Table.Th>
                 <Table.Th>Email</Table.Th>
@@ -69,6 +63,7 @@ function Users() {
               {rows}
             </Table.Tbody>
           </Table>
+         </Table.ScrollContainer>
 
         </div>
    
