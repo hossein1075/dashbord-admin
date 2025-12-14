@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TitlePage from '../Components/TitlePage/TitlePage'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCommentsFromServer } from '../Redux/Comments/comment'
@@ -6,12 +6,14 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
+import { IoIosCloseCircle } from "react-icons/io";
 
 
 
 function Comments() {
   let comments = useSelector(state => state.comments)
   let dispatch = useDispatch()
+  const [confirm, setConfirm] = useState({})
 
   useEffect(()=> {
     dispatch(getCommentsFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/comments.json"))
@@ -27,7 +29,7 @@ function Comments() {
         <Table.Td>{element.email}</Table.Td>
         <Table.Td>{element.comment}</Table.Td>
         <Table.Td>
-          <Button variant="filled" color="#04AA6D" size="xs" radius="md" className='text-zinc-50 mr-1'><GiConfirmed size={16}/></Button>
+          <Button onClick={() => setConfirm(prev => ({ ...prev, [element.id]: !prev[element.id] }))} variant="filled" color={confirm[element.id] ? '#04AA6D' : '#FF3239'} size="xs" radius="md" className='text-zinc-50 mr-1'>{confirm[element.id] ? <GiConfirmed size={16} /> : <IoIosCloseCircle size={16} />}</Button>
           <Button variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={16}/></Button>
         </Table.Td>
       </Table.Tr>
