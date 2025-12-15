@@ -29,7 +29,7 @@ function SideBar() {
   // <div class="transition-[left_0.3s_ease,width_0.3s_ease] ..."></div>
 
   return (
-    <nav className={`w-62.5 fixed min-h-screen bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-40 dark:bg-zinc-700 ${isDesktop ? 'w-[250px] h-screen flex-shrink-0' : 'w-[250px] h-screen absolute z-50'}`}
+    <nav className={`w-62.5 fixed min-h-screen bg-white shadow-[20px_0_20px_-20px_#d3d7e9] z-50 dark:bg-zinc-700 ${isDesktop ? 'w-[250px] h-screen flex-shrink-0' : 'w-[250px] h-screen absolute z-50'}`}
       style={{
         transform: isDesktop
           ? 'translateX(0) scale(1)'

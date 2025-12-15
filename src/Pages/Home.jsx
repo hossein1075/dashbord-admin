@@ -3,6 +3,7 @@ import TitlePage from '../Components/TitlePage/TitlePage'
 import Charts from '../Components/Charts/Charts'
 import HomeBoxs from '../Components/HomeBoxs/HomeBoxs'
 import colorBox from '../Components/HomeBoxs/ColorBox'
+import GroupCharts from '../Components/GroupCharts/GroupCharts'
 
 function Home() {
   return (
@@ -13,8 +14,12 @@ function Home() {
         <HomeBoxs key={item.id} {...item}/>
         ))}
       </div>
-      
-      <Charts/>
+     <div>
+       <Charts/>
+     </div>
+     <div>
+      <GroupCharts/>
+     </div>
     </section>
   )
 }

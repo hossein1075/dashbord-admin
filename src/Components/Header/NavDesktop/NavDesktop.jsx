@@ -10,7 +10,7 @@ function NavDesktop() {
    
     return (
         <>
-            <nav className='fixed top-0 left-60 right-0 border-b-4 border-solid border-emerald-500'>
+            <nav className='fixed top-0 left-60 right-0 border-b-4 border-solid border-emerald-500 z-40'>
                 <div className='hidden lg:flex items-center justify-between py-2 px-10  bg-white dark:bg-zinc-700'>
                     <div>
                         <div className='relative bg-gray-100 h-9 flexCenter border-2 border-solid dark:border-violet-600 border-violet-200 rounded-md'>
