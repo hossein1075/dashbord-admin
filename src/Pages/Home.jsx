@@ -4,6 +4,7 @@ import Charts from '../Components/Charts/Charts'
 import HomeBoxs from '../Components/HomeBoxs/HomeBoxs'
 import colorBox from '../Components/HomeBoxs/ColorBox'
 import GroupCharts from '../Components/GroupCharts/GroupCharts'
+import VisitorSec from '../Components/VisitorSec/VisitorSec'
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <HomeBoxs key={item.id} {...item}/>
         ))}
       </div>
+      <VisitorSec/>
      <div>
        <Charts/>
      </div>
