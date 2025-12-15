@@ -5,6 +5,7 @@ import HomeBoxs from '../Components/HomeBoxs/HomeBoxs'
 import colorBox from '../Components/HomeBoxs/ColorBox'
 import GroupCharts from '../Components/GroupCharts/GroupCharts'
 import VisitorSec from '../Components/VisitorSec/VisitorSec'
+import Orders from '../Components/Orders/Orders'
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
      <div>
       <GroupCharts/>
      </div>
+     <Orders/>
     </section>
   )
 }
