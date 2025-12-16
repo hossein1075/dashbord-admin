@@ -6,11 +6,10 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 
 const elements = [
-  { UserName: 6, ProductID: 12.011, PurchaseDate: 'C', Status: 'Carbon', Email: '', Payment: '', img: '' },
-  { UserName: 7, ProductID: 14.007, PurchaseDate: 'N', Status: 'Nitrogen', Email: '', Payment: '', img: '' },
-  { UserName: 39, ProductID: 88.906, PurchaseDate: 'Y', Status: 'Yttrium', Email: '', Payment: '', img: '' },
-  { UserName: 56, ProductID: 137.33, PurchaseDate: 'Ba', Status: 'Barium', Email: '', Payment: '', img: '' },
-  { UserName: 58, ProductID: 140.12, PurchaseDate: 'Ce', Status: 'Cerium', Email: '', Payment: '', img: '' },
+  { UserName: 'Jordan', ProductID: 12.011, PurchaseDate: 'C', Status: 'Carbon', Email: '', Payment: '', img: '' },
+  { UserName: 'Hilton', ProductID: 14.007, PurchaseDate: 'N', Status: 'Nitrogen', Email: '', Payment: '', img: '' },
+  { UserName: 'Karyn', ProductID: 88.906, PurchaseDate: 'Y', Status: 'Yttrium', Email: '', Payment: '', img: '' },
+  { UserName: 'Chris', ProductID: 137.33, PurchaseDate: 'Ba', Status: 'Barium', Email: '', Payment: '', img: '' },
 ];
 
 function Orders() {

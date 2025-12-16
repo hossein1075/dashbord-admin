@@ -10,21 +10,25 @@
     src: url('../public/fonts/NotoSans-Regular.ttf') format('truetype');
     font-display: swap;
 }
+
 @font-face {
     font-family: 'Noto Bold';
     src: url('../public/fonts/NotoSans-Bold.ttf') format('truetype');
     font-display: swap;
 }
+
 @font-face {
     font-family: 'Noto light';
     src: url('../public/fonts/NotoSans-Light.ttf') format('truetype');
     font-display: swap;
 }
+
 @font-face {
     font-family: 'Noto Medium';
     src: url('../public/fonts/NotoSans-Medium.ttf') format('truetype');
     font-display: swap;
 }
+
 @font-face {
     font-family: 'Noto SemiBold';
     src: url('../public/fonts/NotoSans-SemiBold.ttf') format('truetype');
@@ -40,22 +44,24 @@
     --font-Noto-Medium: 'Noto Medium';
     --font-Noto-SemiBold: 'Noto SemiBold';
     --text-27: 1.6875rem;
+    --breakpoint-xs: 450px;
 }
 
 /* dark & light mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
 * {
-  transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer components {
-.flexCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .flexCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
-}
+
 @layer base {
 
     body {
@@ -66,5 +72,5 @@
 }
 
 @layer container {
-@apply mx-auto px-3.75
+    @apply mx-auto px-3.75
 }
