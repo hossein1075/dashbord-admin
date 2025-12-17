@@ -1,5 +1,6 @@
 import React from 'react'
 import { ResponsiveContainer, Legend, Line, LineChart, Tooltip, XAxis, YAxis,} from 'recharts';
+import ChartsBar from './ChartsBar';
 
 const data = [
     {
@@ -67,7 +68,7 @@ const data = [
 function Charts() {
     return (
        
-            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50'>
+            <div className='grid grid-cols-2 border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50'>
                 <div className="chart-box">
                     <ResponsiveContainer width="100%" height={350}>
                         <LineChart data={data} margin={{ top: 20, right: 20, bottom: 5, left: 0 }}>
@@ -79,6 +80,9 @@ function Charts() {
                             <Legend />
                         </LineChart>
                     </ResponsiveContainer>
+                </div>
+                <div className="chart-box">
+                     <ChartsBar />
                 </div>
             </div>
        
