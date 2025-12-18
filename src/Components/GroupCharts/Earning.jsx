@@ -51,7 +51,7 @@ function Earning() {
             series={series}
             type="bar"
             height={210}
-            width={349}
+            width='100%'
         />
     )
 }

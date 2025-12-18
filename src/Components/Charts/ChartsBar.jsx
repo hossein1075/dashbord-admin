@@ -14,7 +14,9 @@ function ChartsBar({ isAnimationActive = true }) {
         <>
             <div>
                 <BarChart style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }} responsive data={data}>
-                    <Bar dataKey="uv" fill="#82ca9d" isAnimationActive={isAnimationActive} />
+                    <YAxis tick={false} axisLine={true} />
+                    <XAxis dataKey="name" tick={false} axisLine={true} />
+                    <Bar dataKey="uv" fill="#f97316" barSize={18} isAnimationActive={isAnimationActive} />
                 </BarChart>
             </div>
         </>

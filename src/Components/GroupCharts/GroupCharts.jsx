@@ -15,7 +15,7 @@ const incomeInformation = [
 function GroupCharts() {
     return (
         <>
-            <div className='flex w-full my-7 gap-6'>
+            <div className='flex flex-col 2xl:flex-row w-full my-7 gap-6'>
                 <div className='style-div basis-[40%]'>
                     <h2 className='mb-2 text-lg font-Noto-SemiBold font-semibold'>Earnings</h2>
                     <div>
@@ -27,7 +27,7 @@ function GroupCharts() {
                 </div>
                 <div className='style-div basis-[60%]'>
                     <h2 className='mb-2 text-lg font-Noto-SemiBold font-semibold'>Weekly Income</h2>
-                    <div className='grid grid-cols-2'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2'>
                         <ChartsBar />
                         <div className='border-2 border-solid border-zinc-200 rounded-md py-4 px-1'>
                            {incomeInformation.map((item,index) => {
@@ -38,15 +38,15 @@ function GroupCharts() {
                                         <FiBarChart size={20} color='#04aa6d' />
                                     </span>
                                     <div className='flex flex-col'>
-                                        <h6 className='text-text1 mb-1 text-xs'>Total Sales</h6>
-                                        <p className='font-Noto-SemiBold text-lg'>800</p>
+                                        <h6 className='text-text1 mb-1 text-xs'>{item.name}</h6>
+                                        <p className='font-Noto-SemiBold text-lg'>${item.rate}</p>
                                     </div>
                                 </div>
                                 <div>
-                                    <h6 className='mb-1 font-Noto-SemiBold text-lg'>-209</h6>
-                                    <p className='flex items-center gap-1 text-red-500 font-Noto-SemiBold text-xs'>
+                                    <h6 className='mb-1 font-Noto-SemiBold text-lg'>{item.price}</h6>
+                                    <p className={`flex items-center gap-1 font-Noto-SemiBold text-xs ${item.color}`}>
                                         <span><FaArrowTrendUp size={17} /></span>
-                                        30.9%
+                                        {item.rateIcon}%
                                     </p>
                                 </div>
                             </div>
