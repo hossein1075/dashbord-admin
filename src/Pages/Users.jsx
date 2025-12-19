@@ -7,7 +7,8 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
-
+import Swal from 'sweetalert2'
+import { deleteUsersFromServer } from '../Redux/Users/users'
 function Users() {
   let users = useSelector(state => state.users)
   let dispatch = useDispatch()
@@ -16,8 +17,48 @@ function Users() {
     dispatch(getUsersFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/users.json"))
   }, [])
 
-  let usersSite = users ? Object.values(users) : []
+ let usersSite = users ? Object.entries(users).map(([id, data]) => ({
+  id,
+  ...data
+})) : [];
   console.log(users);
+
+ const deleteUser = (id) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This user will be deleted!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#04AA6D',
+    cancelButtonColor: '#FF3239',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(
+        deleteUsersFromServer({
+          url: 'https://information-products-a101d-default-rtdb.firebaseio.com/users',
+          firebaseId: id
+        })
+      ).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'The user has been deleted.',
+          confirmButtonColor: '#04AA6D'
+        });
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Cancelled',
+        text: 'The user was not deleted.',
+        confirmButtonColor: '#FFAA00'
+      });
+    }
+  });
+}
+
   const rows = usersSite.map((element, index) => (
     <Table.Tr key={element.id} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
       <Table.Td>{element.id}</Table.Td>
@@ -26,7 +67,7 @@ function Users() {
       <Table.Td>{element.email}</Table.Td>
       <Table.Td>
         <Button variant="filled" color="#04AA6D" size="xs" radius="md" className='text-zinc-50 mr-1'><FiEdit size={16} /></Button>
-        <Button variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={16} /></Button>
+        <Button onClick={() => deleteUser(element.firebaseId)} variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={16} /></Button>
       </Table.Td>
     </Table.Tr>
   ));
