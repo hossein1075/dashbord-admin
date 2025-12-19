@@ -60,28 +60,41 @@ let commentsSite = comments ? Object.entries(comments).map(([id, data]) => ({
   });
   }
 
-  const deleteComment = (id) => {
-    console.log(id);
+ const deleteComment = (id) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This comment will be deleted!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#04AA6D',
+    cancelButtonColor: '#FF3239',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(
+        deleteCommentsFromServer({
+          url: 'https://information-products-a101d-default-rtdb.firebaseio.com/comments',
+          firebaseId: id
+        })
+      );
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted!',
+        text: 'The comment has been deleted.',
+        confirmButtonColor: '#04AA6D'
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
     
-     Swal.fire({
-        title: 'Are you sure?',
-        text: 'This comment will be deleted!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#04AA6D',
-        cancelButtonColor: '#FF3239',
-        confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-      if(result.isConfirmed) {      
-        dispatch(
-          deleteCommentsFromServer({
-            url: 'https://information-products-a101d-default-rtdb.firebaseio.com/comments',
-            firebaseId: id
-          })
-        )
-      }
-    })
-  }
+      Swal.fire({
+        icon: 'info',
+        title: 'Cancelled',
+        text: 'The comment was not deleted.',
+        confirmButtonColor: '#FFAA00'
+      });
+    }
+  });
+}
 
   const rows = commentsSite.map((element, index) => (
       <Table.Tr key={element.id} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>

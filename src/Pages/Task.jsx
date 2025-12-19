@@ -7,6 +7,8 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
+import { deleteTasksFromServer } from '../Redux/Tasks/tasks'
+import Swal from 'sweetalert2'
 
 
 function Task() {
@@ -18,9 +20,48 @@ function Task() {
   useEffect(()=> {
     dispatch(getTaskeFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/tasks.json"))
   },[])
+
+  let tasksSite = tasks ? Object.entries(tasks).map(([id, data]) => ({
+  id,
+  ...data
+})) : [];
   
-  let tasksSite = tasks ? Object.values(tasks) : []
   console.log(tasksSite);
+const deleteTasks = (id) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This task will be deleted!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#04AA6D',
+    cancelButtonColor: '#FF3239',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(
+        deleteTasksFromServer({
+          url: 'https://information-products-a101d-default-rtdb.firebaseio.com/tasks',
+          firebaseId: id
+        })
+      );
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted!',
+        text: 'The task has been deleted.',
+        confirmButtonColor: '#04AA6D'
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Cancelled',
+        text: 'The task was not deleted.',
+        confirmButtonColor: '#FFAA00'
+      });
+    }
+  });
+}
+
   const rows = tasksSite.map((element, index) => {
      let statusRandom = status[Math.floor(Math.random() * status.length)]
 
@@ -36,7 +77,7 @@ function Task() {
       <Table.Td style={{color: statusColor,}}>{statusRandom}</Table.Td>
       <Table.Td>
 
-        <Button variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={18}/></Button>
+        <Button onClick={() => deleteTasks(element.firebaseId)} variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50'><AiOutlineDelete size={18}/></Button>
       </Table.Td>
     </Table.Tr>)
 });
@@ -82,6 +123,3 @@ function Task() {
 
 export default Task
 
-//  {tasksSite.map(task => (
-      
-//      ))}
