@@ -6,7 +6,8 @@ import { Table } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
-
+import Swal from 'sweetalert2'
+import { deleteProductsFromServer } from '../Redux/Products/product';
 function Products() {
     let products = useSelector(state => state.products)
   let dispatch = useDispatch()
@@ -15,7 +16,46 @@ function Products() {
     dispatch(getProductsFromServer("https://information-products-a101d-default-rtdb.firebaseio.com/products.json"))
   },[])
 
-  let productsSite = products ? Object.values(products) : []
+  let productsSite = products ? Object.entries(products).map(([id, data]) => ({
+  id,
+  ...data
+})) : [];
+
+const deleteProduct = (id) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This product will be deleted!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#04AA6D',
+    cancelButtonColor: '#FF3239',
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(
+        deleteProductsFromServer({
+          url: 'https://information-products-a101d-default-rtdb.firebaseio.com/products',
+          firebaseId: id
+        })
+      ).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'The product has been deleted.',
+          confirmButtonColor: '#04AA6D'
+        });
+      });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Cancelled',
+        text: 'The product was not deleted.',
+        confirmButtonColor: '#FFAA00'
+      });
+    }
+  });
+}
   console.log(productsSite);
   const rows = productsSite.map((element, index) => (
     <Table.Tr key={element.id} style={{background : index % 2 === 0 ? "#f3f4f6" : "#ffffff"}}>
@@ -25,7 +65,7 @@ function Products() {
         <Table.Td>{element.number}</Table.Td>
         <Table.Td>
           <Button variant="filled" color="#04AA6D" size="xs" radius="md" className='text-zinc-50 mr-1' ><FiEdit size={16}/></Button>
-          <Button variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50' ><AiOutlineDelete size={16}/></Button>
+          <Button onClick={() => deleteProduct(element.firebaseId)} variant="filled" color="#FF3239" size="xs" radius="md" className='text-zinc-50' ><AiOutlineDelete size={16}/></Button>
         </Table.Td>
       </Table.Tr>
     ));

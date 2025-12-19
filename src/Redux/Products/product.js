@@ -3,10 +3,24 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getProductsFromServer = createAsyncThunk(
     'products/getProductsFromServer',
     async (url) => {
-        return fetch(url)
-            .then(res => res.json())
-            .then(data => data)
-    }
+    const res = await fetch(url)
+    const data = await res.json()
+
+    return data
+      ? Object.entries(data).map(([firebaseId, comment]) => ({
+          firebaseId,
+          ...comment
+        }))
+      : []
+  }
+)
+
+export const deleteProductsFromServer = createAsyncThunk(
+    'products/deleteProductsFromServer',
+   async ({ url, firebaseId }) => {
+    await fetch(`${url}/${firebaseId}.json`, { method: 'DELETE' });
+    return firebaseId; 
+  }
 )
 
 const productSlice = createSlice({
@@ -16,9 +30,14 @@ const productSlice = createSlice({
 
 
     extraReducers: (builder) => {
-        builder.addCase(getProductsFromServer.fulfilled, (state, action) => {
-            return action.payload
-        })
+        builder
+            .addCase(getProductsFromServer.fulfilled, (state, action) => {
+                return action.payload
+            })
+            .addCase(deleteProductsFromServer.fulfilled, (state, action) => {
+                return state.filter(item => item.firebaseId !== action.payload)
+
+            })
     }
 })
 
