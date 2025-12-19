@@ -17,11 +17,9 @@ export const getCommentsFromServer = createAsyncThunk(
 
 export const deleteCommentsFromServer = createAsyncThunk(
     'comments/deleteCommentsFromServer',
-    async ({ url, firebaseId }) => {
-    await fetch(`${url}/${firebaseId}.json`, {
-      method: 'DELETE'
-    })
-    return firebaseId
+   async ({ url, firebaseId }) => {
+    await fetch(`${url}/${firebaseId}.json`, { method: 'DELETE' });
+    return firebaseId; 
   }
 )
 
@@ -36,8 +34,8 @@ const commentSlice = createSlice({
                 return action.payload
             })
             .addCase(deleteCommentsFromServer.fulfilled, (state, action) => {
-                const newUser = state.filter(item => item.id !== action.payload.id)
-                return newUser
+                return state.filter(item => item.firebaseId  !== action.payload)
+                
             })
     }
 })
