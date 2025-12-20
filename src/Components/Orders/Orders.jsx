@@ -46,7 +46,7 @@ function Orders() {
         <img
           src={element.img}
           alt={element.UserName}
-          className="size-12 rounded-md object-cover border-2 border-solid border-emerald-500"
+          className="size-12 rounded-full object-cover border-2 border-solid border-emerald-500"
         />
       </Table.Td>
       <Table.Td className='font-Noto-SemiBold font-semibold'>{element.UserName}</Table.Td>

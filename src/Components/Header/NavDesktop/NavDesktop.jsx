@@ -5,6 +5,7 @@ import { MdNightlightRound } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import { BiCommentDetail } from "react-icons/bi";
 import { useTheme } from '../../UseTheme/UseTheme';
+import { Link } from 'react-router-dom';
 function NavDesktop() {
     const {dark, darkHandler} = useTheme()
    
@@ -24,9 +25,9 @@ function NavDesktop() {
                         <button onClick={darkHandler} className='size-10 rounded-full flexCenter dark:bg-zinc-50 border-2 border-solid border-zinc-200 cursor-pointer'>
                             {dark ? <MdNightlightRound size={20} /> : <MdOutlineLightMode size={20} />}
                         </button>
-                        <button className='size-10 rounded-full flexCenter dark:bg-zinc-50 border-2 border-solid border-zinc-200 cursor-pointer ml-2'>
+                        <Link to='/comments' className='size-10 rounded-full flexCenter dark:bg-zinc-50 border-2 border-solid border-zinc-200 cursor-pointer ml-2'>
                             <BiCommentDetail size={20} />
-                        </button>
+                        </Link>
                         <div className='flex ml-4'>
                             <img src="/images/header/user2.png" className='size-12 rounded-full' alt="profile" />
                             <div className='flex flex-col ml-2 cursor-pointer text-zinc-800 dark:text-zinc-100'>

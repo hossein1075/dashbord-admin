@@ -10,6 +10,7 @@ import { useTheme } from '../UseTheme/UseTheme';
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
+import { MdOutlineLogin } from "react-icons/md";
 
 function SideBar() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
@@ -99,6 +100,14 @@ function SideBar() {
               <MdOutlineTaskAlt size={16} />
             </span>
             Task
+          </NavLink>
+        </li>
+        <li className='mb-4' onClick={() => ContextData.setOpen(false)}>
+          <NavLink to='/task' className={({ isActive }) => `flex items-center gap-2.5 py-1.75 px-3.75  text-sm   ${isActive ? 'bg-gray-100 text-zinc-800' : 'text-zinc-800 dark:text-zinc-100'}`}>
+            <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  ${window.location.pathname === '/task' ? 'bg-emerald-500 text-zinc-100' : 'bg-zinc-100'}`}>
+              <MdOutlineLogin size={16} />
+            </span>
+            Log Out
           </NavLink>
         </li>
       </ul>
