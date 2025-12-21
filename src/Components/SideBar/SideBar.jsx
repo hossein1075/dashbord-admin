@@ -103,8 +103,8 @@ function SideBar() {
           </NavLink>
         </li>
         <li className='mb-4' onClick={() => ContextData.setOpen(false)}>
-          <NavLink to='/task' className={({ isActive }) => `flex items-center gap-2.5 py-1.75 px-3.75  text-sm   ${isActive ? 'bg-gray-100 text-zinc-800' : 'text-zinc-800 dark:text-zinc-100'}`}>
-            <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  ${window.location.pathname === '/task' ? 'bg-emerald-500 text-zinc-100' : 'bg-zinc-100'}`}>
+          <NavLink to='' className={({ isActive }) => `flex items-center gap-2.5 py-1.75 px-3.75  text-sm   ${isActive ? 'bg-gray-100 text-zinc-800' : 'text-zinc-800 dark:text-zinc-100'}`}>
+            <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  ${window.location.pathname === '' ? 'bg-emerald-500 text-zinc-100' : 'bg-zinc-100'}`}>
               <MdOutlineLogin size={16} />
             </span>
             Log Out
