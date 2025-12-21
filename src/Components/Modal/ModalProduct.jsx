@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Modal, Button, Stack, Group, TextInput } from '@mantine/core';
-
-function ModalProduct({ mode, opened, onClose, productData, onsubmit}) {
+import Swal from 'sweetalert2';
+function ModalProduct({ mode, opened, onClose, productData, onsubmit }) {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
     const [count, setCount] = useState('')
@@ -25,50 +25,111 @@ function ModalProduct({ mode, opened, onClose, productData, onsubmit}) {
             price,
             count,
         }
-         
-       if(onsubmit)  onsubmit(product)
-        onClose()
+
+        if (onsubmit) onsubmit(product)
+        Swal.fire({
+            icon: 'success',
+            title: mode === 'add' ? 'Added!' : 'Edited!',
+            text: `Product ${mode === 'add' ? 'added' : 'edited'} successfully.`,
+            confirmButtonColor: '#76FF03'
+        }).then(() => {
+                onClose()
+        })
     }
     const Handleclose = () => {
-        onClose()
+        Swal.fire({
+            icon: 'info',
+            title: 'Cancelled',
+            text: 'Action was cancelled.',
+            confirmButtonColor: '#FF5722'
+        }).then(() => {
+                onClose()   
+        })
     }
 
     return (
         <>
             <Modal
                 opened={opened}
-                onClose={close}
+                onClose={onClose}
                 title={mode === 'add' ? 'Add Product' : 'Edit Product'}
                 centered
-                style={{
-                    borderTop: '1px solid #04AA6D'
+                styles={{
+                    content: {
+                        borderRadius: 12,
+                        fontFamily: 'Noto Sans, sans-serif',
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+                        backgroundColor: '#E1F5FE',
+                    },
+                    header: {
+                        fontSize: 20,
+                        fontWeight: 700,
+                        fontFamily: 'Noto Medium',
+                        borderBottom: '4px solid #04AA6D',
+                        marginBottom: 10,
+                        backgroundColor: '#E1F5FE',
+
+                    }
                 }}
             >
                 <Stack>
-                    <TextInput 
+                    <TextInput
                         label="Title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        styles={{
+                            input: {
+                                color: '#333',
+                                fontFamily: 'Noto Regular',
+                                fontSize: 18,
+                                border: '2px solid #6A1B9A'
+                            },
+                            label: {
+                                fontFamily: 'Noto Medium',
+                            }
+                        }}
                     />
 
-                    <TextInput 
+                    <TextInput
                         label="Price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+                        styles={{
+                            input: {
+                                color: '#333',
+                                fontFamily: 'Noto Regular',
+                                fontSize: 18,
+                                border: '2px solid #6A1B9A'
+                            },
+                            label: {
+                                fontFamily: 'Noto Medium',
+                            }
+                        }}
                     />
 
-                    <TextInput 
+                    <TextInput
                         label="Count"
                         value={count}
                         onChange={(e) => setCount(e.target.value)}
+                        styles={{
+                            input: {
+                                color: '#333',
+                                fontFamily: 'Noto Regular',
+                                fontSize: 18,
+                                border: '2px solid #6A1B9A'
+                            },
+                            label: {
+                                fontFamily: 'Noto Medium',
+                            }
+                        }}
                     />
 
                     <Group justify="flex-end" mt="md">
-                        <Button variant="default" onClick={Handleclose}>
+                        <Button variant="gradient" gradient={{ from: 'cyan', to: 'gray', deg: 90 }} onClick={Handleclose}>
                             Cancel
                         </Button>
 
-                        <Button color="green" onClick={submitHandler}>
+                        <Button variant="gradient" gradient={{ from: 'green', to: 'lime', deg: 140 }} onClick={submitHandler}>
                             {mode === 'add' ? 'Add' : 'Edit'}
                         </Button>
                     </Group>
