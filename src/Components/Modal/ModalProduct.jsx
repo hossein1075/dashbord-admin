@@ -4,26 +4,26 @@ import Swal from 'sweetalert2';
 function ModalProduct({ mode, opened, onClose, productData, onsubmit }) {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
-    const [count, setCount] = useState('')
+    const [number, setNumber] = useState('')
 
     useEffect(() => {
         if (mode === 'edit' && productData) {
 
-            setTitle(productData.setTitle || '')
-            setPrice(productData.setPrice || '')
-            setCount(productData.setCount || '')
+            setTitle(productData.product || '')
+            setPrice(productData.price || '')
+            setNumber(productData.number || '')
         } else if (mode === 'add') {
             setTitle('')
             setPrice('')
-            setCount('')
+            setNumber('')
         }
     }, [mode, productData])
 
     const submitHandler = () => {
         let product = {
-            title,
+            product: title,
             price,
-            count,
+            number,
         }
 
         if (onsubmit) onsubmit(product)
@@ -109,8 +109,8 @@ function ModalProduct({ mode, opened, onClose, productData, onsubmit }) {
 
                     <TextInput
                         label="Count"
-                        value={count}
-                        onChange={(e) => setCount(e.target.value)}
+                        value={number}
+                        onChange={(e) => setNumber(e.target.value)}
                         styles={{
                             input: {
                                 color: '#333',

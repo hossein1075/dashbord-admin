@@ -7,7 +7,7 @@ import { Button } from '@mantine/core';
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import Swal from 'sweetalert2'
-import { deleteProductsFromServer } from '../Redux/Products/product';
+import { deleteProductsFromServer, addProductsFromServer, editProductsFromServer } from '../Redux/Products/product';
 import ModalProduct from '../Components/Modal/ModalProduct';
 function Products() {
   let products = useSelector(state => state.products)
@@ -63,14 +63,25 @@ function Products() {
   console.log(productsSite);
 
   const editModal = (product) => {
-setMode('edit')
-setOpen(true)
-setSelectedProduct(product)
+    setMode('edit')
+    setOpen(true)
+    setSelectedProduct(product)
   }
   const addProduct = () => {
-setMode('add')
-setOpen(true)
-setSelectedProduct(null)
+    setMode('add')
+    setOpen(true)
+    setSelectedProduct(null)
+  }
+
+  const submitHandler = (product) => {
+    const url = 'https://information-products-a101d-default-rtdb.firebaseio.com/products'
+
+    if (mode === 'add') {
+      dispatch(addProductsFromServer({ url, product }))
+    } else if (mode === 'edit' && selectedProduct) {
+      dispatch(editProductsFromServer({ url, firebaseId: selectedProduct.firebaseId, product }))
+    }
+    setOpen(false)
   }
   const rows = productsSite.map((element, index) => (
     <Table.Tr key={element.id} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
@@ -124,7 +135,7 @@ setSelectedProduct(null)
       </div>
 
 
-      <ModalProduct opened={open} onClose={() => setOpen(false)} mode={mode} productData={selectedProduct} />
+      <ModalProduct opened={open} onClose={() => setOpen(false)} mode={mode} productData={selectedProduct} onsubmit={submitHandler} />
 
     </section>
   )
