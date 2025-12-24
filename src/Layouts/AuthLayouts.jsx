@@ -1,10 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import ParticlesBackground from '../Components/ParticleBackGround/ParticleBackGround'
 
 function AuthLayouts() {
   return (
     <>
-     <div className="min-h-screen flex items-center justify-center bg-emerald-300">
+    <ParticlesBackground/>
+     <div className="min-h-screen flex items-center justify-center">
       <Outlet />
     </div>
     </>
