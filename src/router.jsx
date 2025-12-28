@@ -10,11 +10,12 @@ import MainLayouts from "./Layouts/MainLayouts";
 let routes = [
     {element: <AuthLayouts/>,
         children: [
-            { path: '/', element: <Login/>},
+            { path: '/login', element: <Login/>},
         ]
     },
     {element: <MainLayouts/>,
         children: [
+            { path: '/', element: <Home/>},
             { path: '/home', element: <Home/>},
             { path: '/comments', element: <Comments/>},
             { path: '/products', element: <Products/>},

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { AiOutlineHome } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa6";
 import { FaRegComments } from "react-icons/fa6";
@@ -11,9 +11,11 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineLogin } from "react-icons/md";
+import { toast } from 'react-toastify';
 
 function SideBar() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024)
+  let navigate = useNavigate()
 
 
   const ContextData = useContext(TemplateContextApi)
@@ -25,6 +27,12 @@ function SideBar() {
     window.addEventListener('resize', resizeHandler)
     return () => window.removeEventListener('resize', resizeHandler)
   }, [])
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    navigate('/login')
+    toast.info("You’ve been logged out successfully.");
+  }
 
 
   // <div class="transition-[left_0.3s_ease,width_0.3s_ease] ..."></div>
@@ -102,13 +110,13 @@ function SideBar() {
             Task
           </NavLink>
         </li>
-        <li className='mb-4' onClick={() => ContextData.setOpen(false)}>
-          <NavLink to='' className={({ isActive }) => `flex items-center gap-2.5 py-1.75 px-3.75  text-sm   ${isActive ? 'bg-gray-100 text-zinc-800' : 'text-zinc-800 dark:text-zinc-100'}`}>
+         <li className='mb-4' onClick={() => ContextData.setOpen(false)}>
+          <Link onClick={handleLogin} className={ `flex items-center gap-2.5 py-1.75 px-3.75 text-sm text-zinc-800 dark:text-zinc-100`}>
             <span className={`size-9 rounded-lg flexCenter border-2 border-solid border-zinc-200 dark:bg-emerald-500  ${window.location.pathname === '' ? 'bg-emerald-500 text-zinc-100' : 'bg-zinc-100'}`}>
               <MdOutlineLogin size={16} />
             </span>
             Log Out
-          </NavLink>
+          </Link>
         </li>
       </ul>
 
