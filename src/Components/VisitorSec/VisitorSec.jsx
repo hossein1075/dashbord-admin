@@ -14,7 +14,7 @@ const infoChart = [
 function VisitorSec() {
     return (
         <>
-            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5 my-7'>
+            <div className='style-div rounded-t-md my-7'>
                   <h2 className='mb-2 text-lg font-Noto-SemiBold font-semibold'>Visitors</h2>
                 <div className='flex flex-col 2xl:flex-row items-center '>
                     <div className='hidden sm:block'>

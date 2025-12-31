@@ -1,8 +1,8 @@
 import { FaRegUser } from "react-icons/fa";
 import { FiLock } from "react-icons/fi";
 import LoginSVG from '../Components/LoginSvg/LoginSVG';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { Link, replace, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function Login() {
@@ -10,12 +10,21 @@ function Login() {
   const [password, setPassword] = useState('')
   let navigate = useNavigate()
 
+  useEffect(() => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
+
+  if(isLoggedIn === 'true') {
+    navigate('/home', {replace: true})
+  }
+  }, [])
+
   const handleSubmitForm = (e) => {
     e.preventDefault()
     console.log('hi');
     
     if(userName === 'admin' && password === 'admin') {
-      navigate('/home')
+      localStorage.setItem("isLoggedIn", 'true')
+      navigate('/home', {replace: true})
        toast.success("You're logged in successfully ✨");
     } else {
    toast.error("Incorrect username or password");

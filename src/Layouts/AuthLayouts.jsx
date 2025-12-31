@@ -1,8 +1,13 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import ParticlesBackground from '../Components/ParticleBackGround/ParticleBackGround'
 
 function AuthLayouts() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
+
+  if(isLoggedIn === 'true') {
+    return <Navigate to='/home' replace/>
+  } 
   return (
     <>
     <ParticlesBackground/>

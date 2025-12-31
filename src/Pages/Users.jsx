@@ -95,7 +95,7 @@ function Users() {
     <section>
       <TitlePage title='Users' text='A collection of Users in web seite.' />
 
-      <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
+      <div className='style-div rounded-t-md'>
         <Table.ScrollContainer minWidth={850}>
           <Table
             styles={{

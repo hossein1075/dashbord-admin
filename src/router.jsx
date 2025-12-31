@@ -11,11 +11,11 @@ let routes = [
     {element: <AuthLayouts/>,
         children: [
             { path: '/login', element: <Login/>},
+            { path: '/', element: <Login/>},
         ]
     },
     {element: <MainLayouts/>,
         children: [
-            { path: '/', element: <Home/>},
             { path: '/home', element: <Home/>},
             { path: '/comments', element: <Comments/>},
             { path: '/products', element: <Products/>},

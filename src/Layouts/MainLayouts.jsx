@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import SideBar from '../Components/SideBar/SideBar'
 import Header from '../Components/Header/Header'
 import { TemplateContextApi } from '../ContextApi/CreateContext'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 function MainLayouts() {
     const [open, setOpen] = useState(false)
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
+
+  if(isLoggedIn !== 'true') {
+    return <Navigate to ='/login' replace/>
+  }
   return (
     <>
     <TemplateContextApi.Provider value={{ open, setOpen }}>

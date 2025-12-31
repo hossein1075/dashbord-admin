@@ -30,7 +30,8 @@ function SideBar() {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    navigate('/login')
+    localStorage.removeItem('isLoggedIn')
+    navigate('/login', {replace: true})
     toast.info("You’ve been logged out successfully.");
   }
 

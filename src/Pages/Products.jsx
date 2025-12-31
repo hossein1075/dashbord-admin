@@ -84,7 +84,7 @@ function Products() {
     setOpen(false)
   }
   const rows = productsSite.map((element, index) => (
-    <Table.Tr key={element.id} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
+    <Table.Tr key={index} style={{ background: index % 2 === 0 ? "#f3f4f6" : "#ffffff" }}>
       <Table.Td>{index + 1}</Table.Td>
       <Table.Td>{element.product}</Table.Td>
       <Table.Td>{element.price}$</Table.Td>
@@ -98,7 +98,7 @@ function Products() {
   return (
     <section>
       <TitlePage title='Products' text='A collection of products showing your produce.' />
-      <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
+      <div className='style-div rounded-t-md'>
         <Table.ScrollContainer minWidth={900}>
           <Table
             styles={{

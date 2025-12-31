@@ -1,0 +1,28 @@
+/* ===== Custom Scrollbar ===== */
+
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #22c55e #ffffff; /* thumb | track */
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e, #16a34a);
+  border-radius: 12px;
+  border: 2px solid #ffffff; /* فاصله از بک */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #16a34a, #15803d);
+}
+

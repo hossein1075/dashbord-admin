@@ -111,7 +111,7 @@ let commentsSite = comments ? Object.entries(comments).map(([id, data]) => ({
   return (
     <section>
       <TitlePage title='Commnets' text='A collection of commnets showing your website data.'/>
-       <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
+       <div className='style-div rounded-t-md'>
         
              <Table.ScrollContainer minWidth={900}>
               <Table 

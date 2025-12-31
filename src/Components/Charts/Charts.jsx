@@ -67,7 +67,7 @@ const data = [
 function Charts() {
     return (
        
-            <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50'>
+            <div className='style-div rounded-t-md'>
                 <div className="chart-box">
                     <ResponsiveContainer width="100%" height={350}>
                         <LineChart data={data} margin={{ top: 20, right: 20, bottom: 5, left: 0 }}>

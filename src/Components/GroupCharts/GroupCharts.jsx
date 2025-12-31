@@ -6,11 +6,11 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 import Earning from './Earning';
 
 const incomeInformation = [
-    {name:'Total Sales', rate: '800', price: '-$209', color: 'text-red-500', rateIcon: '30.9'},
-    {name:'Revenue', rate: '6200', price: '+$980', color: 'text-emerald-500', rateIcon: '56.2'},
-    {name:'Products', rate: '630', price: '+$46', color: 'text-emerald-500', rateIcon: '28.8'},
-    {name:'Ads Spent', rate: '$380', price: '-$60', color: 'text-red-500', rateIcon: '49.3'},
-    {name:'Expenses', rate: '890', price: '+$498', color: 'text-emerald-500', rateIcon: '3.9'},
+    {id: 1,name:'Total Sales', rate: '800', price: '-$209', color: 'text-red-500', rateIcon: '30.9'},
+    {id: 2,name:'Revenue', rate: '6200', price: '+$980', color: 'text-emerald-500', rateIcon: '56.2'},
+    {id: 3,name:'Products', rate: '630', price: '+$46', color: 'text-emerald-500', rateIcon: '28.8'},
+    {id: 4,name:'Ads Spent', rate: '$380', price: '-$60', color: 'text-red-500', rateIcon: '49.3'},
+    {id: 5,name:'Expenses', rate: '890', price: '+$498', color: 'text-emerald-500', rateIcon: '3.9'},
 ]
 function GroupCharts() {
     return (
@@ -30,9 +30,9 @@ function GroupCharts() {
                     <div className='grid grid-cols-1 sm:grid-cols-2'>
                         <ChartsBar />
                         <div className='border-2 border-solid border-zinc-200 rounded-md py-4 px-1'>
-                           {incomeInformation.map((item,index) => {
+                           {incomeInformation.map((item) => {
                             return (
-                                 <div className='flex justify-between items-center mb-6'>
+                                 <div key={item.id} className='flex justify-between items-center mb-6'>
                                 <div className='flex items-center gap-1'>
                                     <span className='bg-cyan-100 flexCenter size-12 rounded-full'>
                                         <FiBarChart size={20} color='#04aa6d' />

@@ -84,7 +84,7 @@ const deleteTasks = (id) => {
   return (
     <section>
       <TitlePage title='task' text='A collection of Task for doing by people.'/>
-       <div className='border-t-4 border-solid border-emerald-500 rounded-t-md bg-zinc-50 p-5'>
+       <div className='style-div rounded-t-md'>
    <Table.ScrollContainer minWidth={900}>
            <Table 
            styles={{
